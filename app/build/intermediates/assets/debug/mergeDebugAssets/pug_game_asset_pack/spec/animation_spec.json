@@ -1,0 +1,62 @@
+{
+  "skeleton": "Quadruped pug: root, pelvis, spine_01, spine_02, neck, head, jaw, tail_01, tail_02, front/back upper+lower legs and paws, eye_L/R",
+  "clips": [
+    {
+      "name": "Idle",
+      "fps": 30,
+      "frames": 90,
+      "loop": true,
+      "notes": "breathing, blink, tiny tail curl bounce"
+    },
+    {
+      "name": "Walk",
+      "fps": 30,
+      "frames": 30,
+      "loop": true,
+      "notes": "four-beat cute walk, low body bounce"
+    },
+    {
+      "name": "Run",
+      "fps": 30,
+      "frames": 20,
+      "loop": true,
+      "notes": "fast bound, ears/hat secondary motion"
+    },
+    {
+      "name": "Jump",
+      "fps": 30,
+      "frames": 18,
+      "loop": false,
+      "notes": "anticipation and takeoff"
+    },
+    {
+      "name": "Fall",
+      "fps": 30,
+      "frames": 12,
+      "loop": true,
+      "notes": "airborne loop"
+    },
+    {
+      "name": "Land",
+      "fps": 30,
+      "frames": 16,
+      "loop": false,
+      "notes": "squash and recover"
+    },
+    {
+      "name": "HappyWave",
+      "fps": 30,
+      "frames": 60,
+      "loop": false,
+      "notes": "rear-leg stand, right paw wave, smile"
+    },
+    {
+      "name": "Bark",
+      "fps": 30,
+      "frames": 24,
+      "loop": false,
+      "notes": "jaw open, head kick, chest bounce"
+    }
+  ],
+  "export": "GLB or FBX; apply transforms; meters; Y-up; animations as separate named clips; root motion off by default"
+}

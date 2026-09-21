@@ -1,0 +1,19 @@
+{
+  "characters": [
+    "Red winter pug: tan fur, dark muzzle, blue eyes, red vest, red/cream ushanka",
+    "Blue winter pug: darker face, green eyes, blue knit sweater and cap"
+  ],
+  "environment": "Stylized low-poly ice cave arena with snow, glowing faceted ice, wooden crates/barrels and warm lantern accents",
+  "target_files": [
+    "red_pug.glb",
+    "blue_pug.glb",
+    "ice_cave.glb"
+  ],
+  "texture_workflow": "PBR metallic-roughness, 1024x1024 PNG, BaseColor sRGB; Normal/Roughness linear; metallic=0",
+  "poly_budgets": {
+    "character_lod0": "12k-20k triangles",
+    "character_lod1": "5k-8k triangles",
+    "environment_visible": "80k-150k triangles"
+  },
+  "note": "Reference/concept package. Final rigged GLB/FBX models must be built in Blender or another 3D tool."
+}
