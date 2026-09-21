@@ -12,7 +12,33 @@ import kotlin.random.Random
  * Состояние забега. Чистый Kotlin без Android — поэтому проверяется JVM-тестами.
  * Z отсчитывается от игрока вперёд; мир едет навстречу, игрок стоит на z = 0.
  */
-class Game(seed: Long = System.nanoTime(), private val upgrades: IntArray = IntArray(3)) {
+class Game(
+    seed: Long = System.nanoTime(),
+    private val upgrades: IntArray = IntArray(3),
+    var state: Game.State = Game.State.RUNNING,
+    var time: Float = 0f,
+    var deadTime: Float = 0f,
+    var speed: Float = Config.SPEED_START,
+    var score: Float = 0f,
+    var distance: Float = 0f,
+    var coinsRun: Int = 0,
+    var wallsFlipped: Int = 0,
+    var mult: Int = 1,
+    var continues: Int = 0,
+    var lane: Int = 0,
+    var x: Float = 0f,
+    var side: Int = FLOOR,
+    var wallRunT: Float = 0f,
+    var flipT: Float = 1f,
+    var h: Float = 0f,
+    var slideT: Float = 0f,
+    var runPhase: Float = 0f,
+    var invuln: Float = 0f,
+    var shake: Float = 0f,
+    var camX: Float = 0f,
+    var py0: Float = 0f,
+    var py1: Float = PLAYER_H
+) {
     enum class State { RUNNING, DEAD }
 
     val rnd = Random(seed)
@@ -24,41 +50,16 @@ class Game(seed: Long = System.nanoTime(), private val upgrades: IntArray = IntA
     val events = ArrayList<Event>()
     private val spawner = Spawner(obstacles, coins, powers, rnd)
 
-    var state = State.RUNNING; private set
-    var time = 0f; private set
-    var deadTime = 0f; private set
-    var speed = Config.SPEED_START; private set
-    var score = 0f; private set
-    var distance = 0f; private set
-    var coinsRun = 0; private set
-    var wallsFlipped = 0; private set
-    var mult = 1; private set
-    var continues = 0; private set
-
-    // --- игрок ---
-    var lane: Int = 0; private set
     private var prevLane: Int = 0
-    var x: Float = 0f; private set
-    var side: Int = FLOOR; private set
-    var wallRunT: Float = 0f; private set
-    var isWallRunning get() = wallRunT > 0f
-    var flipT: Float = 1f; private set
     private var flipY0: Float = 0f
-    var h: Float = 0f; private set
     private var vy: Float = 0f
-    var slideT: Float = 0f; private set
-    var runPhase: Float = 0f; private set
-    var invuln: Float = 0f; private set
     private var stumbleT: Float = 0f
     private var bufJump: Float = 0f
     private var bufSlide: Float = 0f
-    var shake: Float = 0f; private set
-    var camX: Float = 0f; private set
     private var biomeIdx: Int = 0
     private var _flipT: Float = 1f
-    var py0: Float = 0f; private set
-    var py1: Float = PLAYER_H; private set
 
+    var isWallRunning get() = wallRunT > 0f
     val powerTime = FloatArray(Power.values().size)
 
     init {
